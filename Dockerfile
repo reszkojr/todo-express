@@ -3,7 +3,7 @@ FROM node:18
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
-RUN corepack enable && pnpm install
+RUN npm install --global corepack@latest && pnpm install
 
 COPY . .
 
