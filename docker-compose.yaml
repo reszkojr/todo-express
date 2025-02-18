@@ -4,9 +4,9 @@ services:
     container_name: postgres-db-todo
     restart: always
     environment:
-      POSTGRES_USER: mosaicQ
-      POSTGRES_PASSWORD: mosaicQ-todo-app
-      POSTGRES_DB: todo-app-express
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pgpassword
+      POSTGRES_DB: todos
     ports:
       - "5432:5432"
     volumes:
@@ -20,7 +20,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: "postgresql://mosaicQ:mosaicQ-todo-app@postgres:5432/todo-app-express"
+      DATABASE_URL: "postgresql://mosaicQ:pgpassword@postgres:5432/todo-app-express"
     ports:
       - "3000:3000"
     volumes:
