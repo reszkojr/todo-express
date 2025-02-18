@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-db-todo
+    restart: always
+    environment:
+      POSTGRES_USER: mosaicQ
+      POSTGRES_PASSWORD: mosaicQ-todo-app
+      POSTGRES_DB: todo-app-express
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: .
+    container_name: express-backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: "postgresql://mosaicQ:mosaicQ-todo-app@postgres:5432/todo-app-express"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: ["pnpm", "run", "dev"]
+
+volumes:
+  postgres_data:
