@@ -32,8 +32,12 @@ export const handleGetTodoById = async (req: Request, res: Response): Promise<an
 
 export const handleCreateTodo = async (req: Request, res: Response): Promise<any> => {
 	try {
-		const { title, description, status } = req.body;
-		const newTodo = await database.insert(todoSchema).values({ title, description, status }).returning();
+		const todo = req.body;
+        if (todo.title == undefined || todo.description == undefined || todo.status == undefined) {
+            return res.status(400).send('Title, description and status are required');
+        }
+
+		const newTodo = await database.insert(todoSchema).values({ ...todo}).returning();
 		res.status(201).json(newTodo[0]);
 	} catch (err) {
 		console.error('Error creating new todo:', err);
