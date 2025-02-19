@@ -1,156 +1,7 @@
 {
-  "name": "Local",
+  "name": "To-dos API ― mosaicQ",
   "version": "1",
   "items": [
-    {
-      "type": "http",
-      "name": "Delete to-do",
-      "seq": 1,
-      "request": {
-        "url": "{{host}}/api/todos",
-        "method": "GET",
-        "headers": [],
-        "params": [],
-        "body": {
-          "mode": "json",
-          "json": "{\n  \"email\": \"email@gmail.com\",\n  \"password\": \"123\"\n}",
-          "formUrlEncoded": [],
-          "multipartForm": [],
-          "file": []
-        },
-        "script": {},
-        "vars": {
-          "res": [
-            {
-              "name": "accessToken",
-              "value": "res.body.accessToken",
-              "enabled": true,
-              "local": false
-            },
-            {
-              "name": "refreshToken",
-              "value": "res.body.refreshToken",
-              "enabled": true,
-              "local": false
-            }
-          ]
-        },
-        "assertions": [],
-        "tests": "",
-        "docs": "",
-        "auth": {
-          "mode": "none"
-        }
-      }
-    },
-    {
-      "type": "folder",
-      "name": "User",
-      "items": [
-        {
-          "type": "http",
-          "name": "Login",
-          "seq": 2,
-          "request": {
-            "url": "{{host}}/api/login",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "json",
-              "json": "{\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
-              "formUrlEncoded": [],
-              "multipartForm": [],
-              "file": []
-            },
-            "script": {},
-            "vars": {
-              "res": [
-                {
-                  "name": "accessToken",
-                  "value": "res.body.accessToken",
-                  "enabled": true,
-                  "local": false
-                },
-                {
-                  "name": "refreshToken",
-                  "value": "res.body.refreshToken",
-                  "enabled": true,
-                  "local": false
-                }
-              ]
-            },
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "none"
-            }
-          }
-        },
-        {
-          "type": "http",
-          "name": "Refresh Token",
-          "seq": 3,
-          "request": {
-            "url": "{{host}}/api/refresh-token",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "json",
-              "json": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
-              "formUrlEncoded": [],
-              "multipartForm": [],
-              "file": []
-            },
-            "script": {},
-            "vars": {
-              "res": [
-                {
-                  "name": "accessToken",
-                  "value": "res.body.accessToken",
-                  "enabled": true,
-                  "local": false
-                }
-              ]
-            },
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "none"
-            }
-          }
-        },
-        {
-          "type": "http",
-          "name": "Register",
-          "seq": 1,
-          "request": {
-            "url": "{{host}}/api/register",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "json",
-              "json": "{\n  \"username\": \"meuusuario2\",\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
-              "formUrlEncoded": [],
-              "multipartForm": [],
-              "file": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "none"
-            }
-          }
-        }
-      ]
-    },
     {
       "type": "folder",
       "name": "To-do",
@@ -301,6 +152,114 @@
           }
         }
       ]
+    },
+    {
+      "type": "folder",
+      "name": "User",
+      "items": [
+        {
+          "type": "http",
+          "name": "Register",
+          "seq": 1,
+          "request": {
+            "url": "{{host}}/api/register",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"meuusuario2\",\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Refresh Token",
+          "seq": 3,
+          "request": {
+            "url": "{{host}}/api/refresh-token",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {
+              "res": [
+                {
+                  "name": "accessToken",
+                  "value": "res.body.accessToken",
+                  "enabled": true,
+                  "local": false
+                }
+              ]
+            },
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Login",
+          "seq": 2,
+          "request": {
+            "url": "{{host}}/api/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {
+              "res": [
+                {
+                  "name": "accessToken",
+                  "value": "res.body.accessToken",
+                  "enabled": true,
+                  "local": false
+                },
+                {
+                  "name": "refreshToken",
+                  "value": "res.body.refreshToken",
+                  "enabled": true,
+                  "local": false
+                }
+              ]
+            },
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
     }
   ],
   "environments": [],
@@ -319,7 +278,7 @@
             "value": "http://localhost:3000",
             "enabled": true,
             "local": false,
-            "uid": "kDrvmx5SlZLcTLd5hUEEL"
+            "uid": "CSMIpm27yPrOT799WyeBn"
           }
         ]
       }
@@ -327,7 +286,7 @@
   },
   "brunoConfig": {
     "version": "1",
-    "name": "Local",
+    "name": "To-dos API ― mosaicQ",
     "type": "collection",
     "ignore": [
       "node_modules",

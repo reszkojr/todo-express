@@ -1,154 +1,13 @@
 {
   "info": {
-    "name": "Local",
+    "name": "To-dos API ― mosaicQ",
     "description": "",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "Delete to-do",
-      "event": [],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "auth": {
-          "type": "noauth"
-        },
-        "description": "",
-        "url": {
-          "raw": "{{host}}/api/todos",
-          "protocol": "",
-          "host": [
-            "{{host}}"
-          ],
-          "path": [
-            "api",
-            "todos"
-          ],
-          "query": [],
-          "variable": []
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"email\": \"email@gmail.com\",\n  \"password\": \"123\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        }
-      }
-    },
-    {
       "name": "bruno",
       "event": []
-    },
-    {
-      "name": "User",
-      "item": [
-        {
-          "name": "Login",
-          "event": [],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "auth": {
-              "type": "noauth"
-            },
-            "description": "",
-            "url": {
-              "raw": "{{host}}/api/login",
-              "protocol": "",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "login"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "Refresh Token",
-          "event": [],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "auth": {
-              "type": "noauth"
-            },
-            "description": "",
-            "url": {
-              "raw": "{{host}}/api/refresh-token",
-              "protocol": "",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "refresh-token"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "Register",
-          "event": [],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "auth": {
-              "type": "noauth"
-            },
-            "description": "",
-            "url": {
-              "raw": "{{host}}/api/register",
-              "protocol": "",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "register"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"username\": \"meuusuario2\",\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     {
       "name": "To-do",
@@ -352,6 +211,113 @@
           }
         }
       ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{host}}/api/register",
+              "protocol": "",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "register"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"meuusuario2\",\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{host}}/api/refresh-token",
+              "protocol": "",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "refresh-token"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{host}}/api/login",
+              "protocol": "",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   ],
   "variable": [
@@ -361,12 +327,12 @@
       "type": "default"
     },
     {
-      "key": "refreshToken",
+      "key": "accessToken",
       "value": "",
       "type": "default"
     },
     {
-      "key": "accessToken",
+      "key": "refreshToken",
       "value": "",
       "type": "default"
     }
