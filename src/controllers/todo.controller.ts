@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { database } from '../db/db';
-import { todoSchema } from '../db/schema';
+import { todoSchema } from '../db/schema/todo.schema';
 import { eq } from 'drizzle-orm';
 
 export const getTodos = async (req: Request, res: Response): Promise<any> => {

@@ -3,13 +3,13 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.ts",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "ts-node src/index.ts",
-        "build": "tsc",
-        "db:generate": "drizzle-kit generate",
-        "db:migrate": "drizzle-kit migrate"
-    },
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "ts-node src/index.ts",
+		"build": "tsc",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate"
+	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -20,7 +20,8 @@
 		"drizzle-orm": "^0.39.3",
 		"express": "^4.21.2",
 		"jsonwebtoken": "^9.0.2",
-		"postgres": "^3.4.5"
+		"postgres": "^3.4.5",
+		"todo-express": "link:"
 	},
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.6",

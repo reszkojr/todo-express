@@ -19,16 +19,19 @@ importers:
         version: 16.4.7
       drizzle-orm:
         specifier: ^0.39.3
-        version: 0.39.3(@types/pg@8.11.11)(pg@8.13.3)
+        version: 0.39.3(@types/pg@8.11.11)(pg@8.13.3)(postgres@3.4.5)
       express:
         specifier: ^4.21.2
         version: 4.21.2
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
-      pg:
-        specifier: ^8.13.3
-        version: 8.13.3
+      postgres:
+        specifier: ^3.4.5
+        version: 3.4.5
+      todo-express:
+        specifier: 'link:'
+        version: 'link:'
     devDependencies:
       '@types/bcryptjs':
         specifier: ^2.4.6
@@ -51,6 +54,9 @@ importers:
       nodemon:
         specifier: ^3.1.9
         version: 3.1.9
+      pg:
+        specifier: ^8.13.3
+        version: 8.13.3
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.13.4)(typescript@5.7.3)
@@ -1114,6 +1120,10 @@ packages:
   postgres-range@1.1.4:
     resolution: {integrity: sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==}
 
+  postgres@3.4.5:
+    resolution: {integrity: sha512-cDWgoah1Gez9rN3H4165peY9qfpEo+SA61oQv65O3cRUE1pOEoJWwddwcqKE8XZYjbblOJlYDlLV4h67HrEVDg==}
+    engines: {node: '>=12'}
+
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -1703,10 +1713,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.39.3(@types/pg@8.11.11)(pg@8.13.3):
+  drizzle-orm@0.39.3(@types/pg@8.11.11)(pg@8.13.3)(postgres@3.4.5):
     optionalDependencies:
       '@types/pg': 8.11.11
       pg: 8.13.3
+      postgres: 3.4.5
 
   dunder-proto@1.0.1:
     dependencies:
@@ -2113,6 +2124,8 @@ snapshots:
   postgres-interval@3.0.0: {}
 
   postgres-range@1.1.4: {}
+
+  postgres@3.4.5: {}
 
   proxy-addr@2.0.7:
     dependencies:
