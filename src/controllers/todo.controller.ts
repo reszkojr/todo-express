@@ -3,7 +3,7 @@ import { database } from '../db/db';
 import { todoSchema } from '../db/schema/todo.schema';
 import { eq } from 'drizzle-orm';
 
-export const getTodos = async (req: Request, res: Response): Promise<any> => {
+export const handleGetTodos = async (req: Request, res: Response): Promise<any> => {
 	try {
 		const todos = await database.select().from(todoSchema);
 		res.json(todos);
@@ -13,7 +13,7 @@ export const getTodos = async (req: Request, res: Response): Promise<any> => {
 	}
 };
 
-export const getTodoById = async (req: Request, res: Response): Promise<any> => {
+export const handleGetTodoById = async (req: Request, res: Response): Promise<any> => {
 	const { id } = req.params;
 	try {
 		const todoItem = await database
@@ -30,7 +30,7 @@ export const getTodoById = async (req: Request, res: Response): Promise<any> => 
 	}
 };
 
-export const createTodo = async (req: Request, res: Response): Promise<any> => {
+export const handleCreateTodo = async (req: Request, res: Response): Promise<any> => {
 	try {
 		const { title, description, status } = req.body;
 		const newTodo = await database.insert(todoSchema).values({ title, description, status }).returning();
@@ -41,7 +41,7 @@ export const createTodo = async (req: Request, res: Response): Promise<any> => {
 	}
 };
 
-export const updateTodo = async (req: Request, res: Response): Promise<any> => {
+export const handleUpdateTodo = async (req: Request, res: Response): Promise<any> => {
 	const { id } = req.params;
 	try {
 		const { title, description, status } = req.body;
@@ -60,7 +60,7 @@ export const updateTodo = async (req: Request, res: Response): Promise<any> => {
 	}
 };
 
-export const deleteTodo = async (req: Request, res: Response): Promise<any> => {
+export const handleDeleteTodo = async (req: Request, res: Response): Promise<any> => {
 	const { id } = req.params;
 	try {
 		const deletedTodo = await database

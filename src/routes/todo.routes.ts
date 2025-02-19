@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { getTodos, getTodoById, createTodo, updateTodo, deleteTodo } from '../controllers/todo.controller';
+import { handleGetTodos, handleGetTodoById, handleCreateTodo, handleUpdateTodo, handleDeleteTodo } from '../controllers/todo.controller';
 
 const router = Router();
 
-router.get('/todos', getTodos);
-router.get('/todos/:id', getTodoById);
-router.post('/todos', createTodo);
-router.put('/todos/:id', updateTodo);
-router.delete('/todos/:id', deleteTodo);
+router.get('/todos', handleGetTodos);
+router.get('/todos/:id', handleGetTodoById);
+router.post('/todos', handleCreateTodo);
+router.put('/todos/:id', handleUpdateTodo);
+router.delete('/todos/:id', handleDeleteTodo);
 
 export default router;
