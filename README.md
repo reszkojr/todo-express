@@ -30,11 +30,27 @@ Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina:
 
    O servidor estará disponível em `http://localhost:3000`.
 
+
+## O que o Docker faz
+
+O `docker-compose.yaml` define os serviços necessários para a aplicação, como o banco de dados PostgreSQL e o Express.js em Node.
+
+O `Dockerfile` contém as instruções para criar a imagem Docker da aplicação Node, incluindo a instalação das dependências e a definição do comando de inicialização.
+
+Rodando o comando `docker-compose up --build`, é exposta a porta 5432, que roda o banco do PostgreSQL e a porta 3000, que roda o *backend* em si.
+
+### Inicialização das Tabelas
+
+As tabelas do banco de dados são iniciadas automaticamente com o Drizzle quando os containers Docker são iniciados.
+
+Ao realizar a *build* da imagem, o Drizzle espera o banco do PostgreSQL iniciar para gerar as migrações e, então, aplicá-las ao banco. Nesse momento, são criadas as tabelas `user` e `todo`.
+
+
 ## Rotas da API
 
 ### Documentação da API
 
-A documentação da API é gerada automaticamente usando Swagger. É possível acessá-la em `http://localhost:3000/api-docs/`.
+A documentação da API é gerada automaticamente usando Swagger. É possível acessa-la em `http://localhost:3000/api-docs/`.
 
 ### Autenticação
 
