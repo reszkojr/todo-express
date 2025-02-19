@@ -3,6 +3,7 @@ import { userSchema } from '../db/schema/user.schema';
 import { database } from '../db/db';
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
+import jwt from 'jsonwebtoken';
 
 export const handleRegisterUser = async (req: Request, res: Response): Promise<any> => {
 	const user = req.body;
@@ -58,7 +59,11 @@ export const handleLoginUser = async (req: Request, res: Response): Promise<any>
 			}
 
 			const { password: _, ...userWithoutPassword } = user[0];
-			res.json(userWithoutPassword);
+
+			const accessToken = jwt.sign(userWithoutPassword, process.env.JWT_SECRET_KEY!, { expiresIn: '15s' });
+            const refreshToken = jwt.sign(userWithoutPassword, process.env.JWT_REFRESH_SECRET_KEY!, { expiresIn: '1h' });
+
+            res.status(200).json({ accessToken, refreshToken });
 		});
 	} catch (err) {
 		console.error('Error logging in user:', err);
