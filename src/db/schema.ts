@@ -1,11 +1,11 @@
-import { boolean, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { pgEnum, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+
+export const statusEnums = pgEnum('status', ['pending', 'in progress', 'completed']);
 
 export const todoSchema = pgTable('todo', {
 	id: serial('id').primaryKey(),
 	title: text('title').notNull(),
 	description: text('description'),
-	done: boolean('completed').default(false).notNull(),
-	dueDate: timestamp('due_date'),
+	status: statusEnums().default('pending').notNull(),
 	createdAt: timestamp('created_at').defaultNow().notNull(),
-	updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
