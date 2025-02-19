@@ -1,31 +1,31 @@
 services:
-  postgres:
-    image: postgres:15
-    container_name: postgres-db-todo
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pgpassword
-      POSTGRES_DB: todos
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    postgres:
+        image: postgres:15
+        container_name: postgres-db-todo
+        restart: always
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: pgpassword
+            POSTGRES_DB: todos
+        ports:
+            - '5432:5432'
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  backend:
-    build: .
-    container_name: express-backend
-    restart: always
-    depends_on:
-      - postgres
-    environment:
-      DATABASE_URL: "postgresql://mosaicQ:pgpassword@postgres:5432/todo-app-express"
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-    command: ["pnpm", "run", "dev"]
+    backend:
+        build: .
+        container_name: express-backend
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            DATABASE_URL: 'postgresql://postgres:pgpassword@postgres:5432/todos'
+        ports:
+            - '3000:3000'
+        volumes:
+            - .:/app
+        command: ['pnpm', 'run', 'dev']
 
 volumes:
-  postgres_data:
+    postgres_data:
