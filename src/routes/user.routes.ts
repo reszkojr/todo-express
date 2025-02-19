@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { handleRegisterUser, handleLoginUser } from '../controllers/user.controller';
+import { handleRegisterUser, handleLoginUser, handleRefreshToken } from '../controllers/user.controller';
 
 const router = Router();
 
@@ -69,5 +69,38 @@ router.post('/register', handleRegisterUser);
  *                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
  */
 router.post('/login', handleLoginUser);
+
+/**
+ * @swagger
+ * /refresh-token:
+ *   post:
+ *     summary: Refresh JWT token
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               token:
+ *                 type: string
+ *           example:
+ *             token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+ *     responses:
+ *       200:
+ *         description: The refreshed token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: New JWT token
+ *               example:
+ *                 token: "newToken..."
+ */
+router.post('/refresh-token', handleRefreshToken);
 
 export default router;
