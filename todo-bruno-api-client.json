@@ -1,0 +1,339 @@
+{
+  "name": "Local",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Delete to-do",
+      "seq": 1,
+      "request": {
+        "url": "{{host}}/api/todos",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"email\": \"email@gmail.com\",\n  \"password\": \"123\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {
+          "res": [
+            {
+              "name": "accessToken",
+              "value": "res.body.accessToken",
+              "enabled": true,
+              "local": false
+            },
+            {
+              "name": "refreshToken",
+              "value": "res.body.refreshToken",
+              "enabled": true,
+              "local": false
+            }
+          ]
+        },
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "folder",
+      "name": "User",
+      "items": [
+        {
+          "type": "http",
+          "name": "Login",
+          "seq": 2,
+          "request": {
+            "url": "{{host}}/api/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {
+              "res": [
+                {
+                  "name": "accessToken",
+                  "value": "res.body.accessToken",
+                  "enabled": true,
+                  "local": false
+                },
+                {
+                  "name": "refreshToken",
+                  "value": "res.body.refreshToken",
+                  "enabled": true,
+                  "local": false
+                }
+              ]
+            },
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Refresh Token",
+          "seq": 3,
+          "request": {
+            "url": "{{host}}/api/refresh-token",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {
+              "res": [
+                {
+                  "name": "accessToken",
+                  "value": "res.body.accessToken",
+                  "enabled": true,
+                  "local": false
+                }
+              ]
+            },
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Register",
+          "seq": 1,
+          "request": {
+            "url": "{{host}}/api/register",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"meuusuario2\",\n  \"email\": \"lol2@gmail.com\",\n  \"password\": \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "To-do",
+      "items": [
+        {
+          "type": "http",
+          "name": "Create to-do",
+          "seq": 2,
+          "request": {
+            "url": "{{host}}/api/todos",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"title\": \"Tarefa 3\",\n  \"description\": \"Descrição para a tarefa 3\",\n  \"status\": \"pending\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{accessToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete to-do",
+          "seq": 5,
+          "request": {
+            "url": "{{host}}/api/todos/4",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"email@gmail.com\",\n  \"password\": \"123\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{accessToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Get to-do",
+          "seq": 3,
+          "request": {
+            "url": "{{host}}/api/todos/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"email@gmail.com\",\n  \"password\": \"123\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{accessToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Get to-dos",
+          "seq": 1,
+          "request": {
+            "url": "{{host}}/api/todos",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"email@gmail.com\",\n  \"password\": \"123\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{accessToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update to-do",
+          "seq": 4,
+          "request": {
+            "url": "{{host}}/api/todos/2",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"title\": \"Tarefa 5\",\n  \"status\": \"pending\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{accessToken}}"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "root": {
+    "request": {
+      "auth": {
+        "mode": "bearer",
+        "bearer": {
+          "token": "{{accessToken}}"
+        }
+      },
+      "vars": {
+        "req": [
+          {
+            "name": "host",
+            "value": "http://localhost:3000",
+            "enabled": true,
+            "local": false,
+            "uid": "kDrvmx5SlZLcTLd5hUEEL"
+          }
+        ]
+      }
+    }
+  },
+  "brunoConfig": {
+    "version": "1",
+    "name": "Local",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0022668838500976562,
+    "filesCount": 10
+  }
+}
