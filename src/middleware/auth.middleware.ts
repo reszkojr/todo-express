@@ -24,7 +24,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
 		req.user = user;
 		next();
 	} catch (error) {
-        console.log(error)
+        console.error(error)
 		if (error instanceof InvalidTokenError) {
 			res.status(401).send({ error: `Authentication failed: ${error.message}` });
 			return;
