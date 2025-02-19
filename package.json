@@ -21,7 +21,8 @@
 		"express": "^4.21.2",
 		"jsonwebtoken": "^9.0.2",
 		"postgres": "^3.4.5",
-		"todo-express": "link:"
+		"todo-express": "link:",
+		"zod": "^3.24.2"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.2",

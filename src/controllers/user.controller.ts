@@ -60,7 +60,7 @@ export const handleLoginUser = async (req: Request, res: Response): Promise<any>
 
 			const { password: _, ...userWithoutPassword } = user[0];
 
-			const accessToken = jwt.sign(userWithoutPassword, process.env.JWT_SECRET_KEY!, { expiresIn: '15s' });
+			const accessToken = jwt.sign(userWithoutPassword, process.env.JWT_SECRET_KEY!, { expiresIn: '15m' });
             const refreshToken = jwt.sign(userWithoutPassword, process.env.JWT_REFRESH_SECRET_KEY!, { expiresIn: '1h' });
 
             res.status(200).json({ accessToken, refreshToken });
