@@ -39,6 +39,16 @@ O `Dockerfile` contém as instruções para criar a imagem Docker da aplicação
 
 Rodando o comando `docker-compose up --build`, é exposta a porta 5432, que roda o banco do PostgreSQL e a porta 3000, que roda o *backend* em si.
 
+## Testando a Aplicação
+
+Para testar a aplicação, primeiro, certifique-se de que ela está em execução. Em seguida, execute o seguinte comando para rodar os testes:
+
+```sh
+sudo docker-compose exec -it backend pnpm run test
+```
+
+Este comando irá executar os testes definidos no projeto dentro do container Docker do backend.
+
 ### Inicialização das Tabelas
 
 As tabelas do banco de dados são iniciadas automaticamente com o Drizzle quando os containers Docker são iniciados.
