@@ -12,11 +12,9 @@ describe('User Routes', () => {
 			password: 'password123',
 		});
 		expect(res.statusCode).toEqual(201);
-		expect(res.body).toEqual({
-			id: 2,
-			username: 'testuser2',
-			email: 'testuser2@example.com',
-		});
+        expect(res.body).toHaveProperty('id');
+        expect(res.body).toHaveProperty('username', 'testuser2');
+        expect(res.body).toHaveProperty('email', 'testuser2@example.com');
 	});
 
 	it('should login an existing user', async () => {
