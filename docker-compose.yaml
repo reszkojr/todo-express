@@ -13,17 +13,18 @@ services:
             - postgres_data:/var/lib/postgresql/data
     
     postgres_test:
-        image: postgres:15
-        container_name: postgres-db-todo-test
-        restart: always
-        environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: pgpassword
-            POSTGRES_DB: todos_test
-        ports:
-            - '5433:5432'
-        volumes:
-            - postgres_data:/var/lib/postgresql/data
+      image: postgres:15
+      container_name: postgres-db-todo-test
+      restart: always
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: pgpassword
+        POSTGRES_DB: todos
+        PGPORT: 5433
+      ports:
+        - '5433:5433'
+      volumes:
+        - postgres_test_data:/var/lib/postgresql/data
 
     backend:
         build: .
@@ -33,6 +34,7 @@ services:
             - postgres
         environment:
             DATABASE_URL: 'postgresql://postgres:pgpassword@postgres:5432/todos'
+            DATABASE_URL_TEST: 'postgresql://postgres:pgpassword@postgres_test:5433/todos'
             JWT_SECRET_KEY: '02d7729bd71cd8c62ddbc0cbef65dbe37a87cd80da'
             JWT_REFRESH_SECRET_KEY: '1c59724dd35b315324917a01dd5db3ec0995f98eeb2345b3d06e334'
         ports:
@@ -43,3 +45,4 @@ services:
 
 volumes:
     postgres_data:
+    postgres_test_data:
