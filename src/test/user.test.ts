@@ -7,21 +7,21 @@ describe('User Routes', () => {
 
 	it('should register a new user', async () => {
 		const res = await request(app).post('/api/register').send({
-			username: 'testuser',
-			email: 'testuser@example.com',
+			username: 'testuser2',
+			email: 'testuser2@example.com',
 			password: 'password123',
 		});
 		expect(res.statusCode).toEqual(201);
 		expect(res.body).toEqual({
-			id: 1,
-			username: 'testuser',
-			email: 'testuser@example.com',
+			id: 2,
+			username: 'testuser2',
+			email: 'testuser2@example.com',
 		});
 	});
 
 	it('should login an existing user', async () => {
 		const res = await request(app).post('/api/login').send({
-			email: 'testuser@example.com',
+			email: 'testuser2@example.com',
 			password: 'password123',
 		});
 		expect(res.statusCode).toEqual(200);

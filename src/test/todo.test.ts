@@ -98,8 +98,6 @@ describe('Todo Routes', () => {
                 status: 'pending'
             });
         
-            console.log(token)
-
         const response = await request(app)
             .delete(`/api/todos/${newTodo.body.id}`)
             .set('Authorization', `Bearer ${token}`);
