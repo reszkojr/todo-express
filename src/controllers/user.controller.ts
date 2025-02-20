@@ -3,7 +3,7 @@ import { userSchema, UserType } from '../db/schema/user.schema';
 import { database } from '../db/db';
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 export const handleRegisterUser = async (req: Request, res: Response): Promise<any> => {
 	const user = req.body;
