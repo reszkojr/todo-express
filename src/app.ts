@@ -1,16 +1,11 @@
-import 'dotenv/config';
-import express from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import todoRoutes from './routes/todo.routes';
 import userRoutes from './routes/user.routes';
+import server from './server';
 
-const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-
-// Swagger set up
 const swaggerOptions = {
 	swaggerDefinition: {
 		openapi: '3.0.0',
@@ -105,12 +100,13 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.use('/api', todoRoutes);
-app.use('/api', userRoutes);
-
-app.listen(port, () => {
-	console.log(`Server running on port ${port}`);
-	console.log(`Swagger docs available at http://localhost:${port}/api-docs`);
+server.use('/healthcheck', (req, res) => {
+	res.status(200).send('Server is running');
 });
+
+server.use('/api', todoRoutes);
+server.use('/api', userRoutes);
+
+export default server;
