@@ -2,6 +2,9 @@ import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as userSchema from './schema/user.schema';
 import * as todoSchema from './schema/todo.schema';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const connectionString = process.env.NODE_ENV === 'test' ? process.env.DATABASE_URL_TEST : process.env.DATABASE_URL;
 

@@ -16,6 +16,7 @@
 	"dependencies": {
 		"@babel/preset-typescript": "^7.26.0",
 		"@jest/globals": "^29.7.0",
+		"@types/dotenv": "^8.2.3",
 		"@types/node": "^22.13.4",
 		"@types/swagger-jsdoc": "^6.0.4",
 		"@types/swagger-ui-express": "^4.1.7",

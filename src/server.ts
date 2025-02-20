@@ -1,5 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const server = express();
 const port = process.env.NODE_ENV === 'test' ? 0 : (process.env.PORT || 3000);

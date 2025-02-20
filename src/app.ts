@@ -3,6 +3,9 @@ import swaggerUi from 'swagger-ui-express';
 import todoRoutes from './routes/todo.routes';
 import userRoutes from './routes/user.routes';
 import server from './server';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const port = process.env.PORT || 3000;
 

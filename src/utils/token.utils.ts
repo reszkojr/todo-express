@@ -1,5 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { InvalidTokenError } from '../exceptions/invalidTokenError';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const validateToken = (token: string) => {
 	const isTokenValid = jwt.verify(token, process.env.JWT_SECRET_KEY!);

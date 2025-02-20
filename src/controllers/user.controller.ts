@@ -4,6 +4,9 @@ import { database } from '../db/db';
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const handleRegisterUser = async (req: Request, res: Response): Promise<any> => {
 	const user = req.body;
