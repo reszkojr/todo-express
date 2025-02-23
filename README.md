@@ -1,7 +1,7 @@
 
 # Todo Express API
 
-Este é um projeto de API de gerenciamento de tarefas (Todo) construído com Node.js, Express, PostgreSQL e Drizzle ORM para o desafio de candidatura da **mosaicQ**. 
+Este é um projeto de API de gerenciamento de tarefas (Todo) construído com Node.js, Express, PostgreSQL e Drizzle ORM.
 A API permite criar, ler, atualizar e excluir tarefas, além de gerenciar usuários e autenticação.
 
 ## Configuração do Projeto
