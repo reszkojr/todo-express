@@ -68,9 +68,9 @@ Para a configuração local, certifique-se de ter o Node.js e o PostgreSQL insta
    pnpm install
    ```
 
-3. **Configure o arquivo [`.env`](.env) :**
+3. **Configure o arquivo `.env` :**
 
-   Crie um arquivo [`.env`](.env) (ou renomeie o arquivo `.env.example` para `.env`) na raiz do projeto e adicione as seguintes variáveis de ambiente:
+   Crie um arquivo `.env` (ou renomeie o arquivo `.env.example` para `.env`) na raiz do projeto e adicione as seguintes variáveis de ambiente:
 
    ```properties
    DATABASE_URL=postgresql://postgres:pgpassword@localhost:5432/todos
