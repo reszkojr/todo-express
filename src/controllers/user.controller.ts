@@ -80,21 +80,27 @@ export const handleRefreshToken = async (req: Request, res: Response): Promise<a
 		return res.status(400).send('Refresh token is required');
 	}
 
+	let decodedJwt;
 	try {
-		const decodedJwt = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET_KEY!);
-
-		const { email } = decodedJwt as { email: string };
-		const existingUser = await database.select().from(userSchema).where(eq(userSchema.email, email)).limit(1);
-		if (!existingUser.length) {
-			return res.status(404).send('User not found');
-		}
-
-		const { password: _, ...userWithoutPassword } = existingUser[0];
-		const newAccessToken = jwt.sign(userWithoutPassword, process.env.JWT_SECRET_KEY!, { expiresIn: '15m' });
-
-		res.status(200).json({ accessToken: newAccessToken });
-	} catch (err) {
-		console.error('Error refreshing token:', err);
-		res.status(500).send('Internal server error while refreshing token');
+		decodedJwt = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET_KEY!);
+	} catch (error) {
+        if (error instanceof jwt.TokenExpiredError) {
+            return res.status(401).send('Refresh token has expired');
+        }
+        if (error instanceof jwt.JsonWebTokenError) {
+            return res.status(401).send('Refresh token is invalid');
+        }
+		res.status(500).send('Error verifying refresh token');
 	}
+
+	const { email } = decodedJwt as { email: string };
+	const existingUser = await database.select().from(userSchema).where(eq(userSchema.email, email)).limit(1);
+	if (!existingUser.length) {
+		return res.status(404).send('User not found');
+	}
+
+	const { password: _, ...userWithoutPassword } = existingUser[0];
+	const newAccessToken = jwt.sign(userWithoutPassword, process.env.JWT_SECRET_KEY!, { expiresIn: '15m' });
+
+	res.status(200).json({ accessToken: newAccessToken });
 };
