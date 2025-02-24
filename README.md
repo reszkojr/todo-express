@@ -1,7 +1,7 @@
 
 # Todo Express API
 
-Este é um projeto de API de gerenciamento de tarefas (Todo) construído com Node.js, Express, PostgreSQL e Drizzle ORM para o desafio de candidatura da **mosaicQ**. 
+Este é um projeto de API de gerenciamento de tarefas (Todo) construído com Node.js, Express, PostgreSQL e Drizzle ORM.
 A API permite criar, ler, atualizar e excluir tarefas, além de gerenciar usuários e autenticação.
 
 ## Configuração do Projeto
@@ -68,9 +68,9 @@ Para a configuração local, certifique-se de ter o Node.js e o PostgreSQL insta
    pnpm install
    ```
 
-3. **Configure o arquivo [`.env`](.env) :**
+3. **Configure o arquivo `.env` :**
 
-   Crie um arquivo [`.env`](.env) (ou renomeie o arquivo `.env.example` para `.env`) na raiz do projeto e adicione as seguintes variáveis de ambiente:
+   Crie um arquivo `.env` (ou renomeie o arquivo `.env.example` para `.env`) na raiz do projeto e adicione as seguintes variáveis de ambiente:
 
    ```properties
    DATABASE_URL=postgresql://postgres:pgpassword@localhost:5432/todos
