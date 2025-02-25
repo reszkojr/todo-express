@@ -6,11 +6,11 @@ A API permite criar, ler, atualizar e excluir tarefas, além de gerenciar usuár
 
 ## Configuração do Projeto
 
-Por conta de problemas ao realizar a build na Dockerfile no Windows (e apenas no Windows. Testei com duas máquinas Linux e o build funciona normalmente.), há duas opções:
+É possível configurar o projeto localmente de duas formas:
  - Configurar o projeto com Docker
  - Configurar o projeto nativa e localmente
 
-## Opção 1: Configuração com Docker (recomendado para ambientes Linux)
+## Opção 1: Configuração com Docker
 #### Pré-requisitos
 
 Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina para a configuração com Docker.
@@ -43,7 +43,7 @@ O Dockerfile contém as instruções para criar a imagem Docker da aplicação N
 
 Rodando o comando `docker-compose up --build`, é exposta a porta 5432, que roda o banco do PostgreSQL e a porta 3000, que roda o *backend* em si.
 
-## Opção 2: Configuração Local (recomendado para ambientes Windows)
+## Opção 2: Configuração Local
 
 #### Pré-requisitos
 
