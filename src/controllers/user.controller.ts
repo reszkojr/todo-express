@@ -9,33 +9,38 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const handleRegisterUser = async (req: Request, res: Response): Promise<any> => {
-	const user = req.body;
+    const user = req.body;
 
-	if (user.username == undefined || user.email == undefined || user.password == undefined) {
-		return res.status(400).send('Username, email and password are required');
-	}
+    if (user.username == undefined || user.email == undefined || user.password == undefined) {
+        return res.status(400).send('Username, email and password are required');
+    }
 
-	try {
-		const existingUser = await database.select().from(userSchema).where(eq(userSchema.email, user.email)).limit(1);
-		if (existingUser.length) {
-			return res.status(400).send('User already exists');
-		}
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(user.email)) {
+        return res.status(400).send('Invalid email');
+    }
 
-		bcrypt.hash(user.password, 10, async function (err, hash) {
-			if (err) {
-				console.error('Error hashing password:', err);
-				return res.status(500).send('Internal server error while hashing password');
-			}
+    try {
+        const existingUser = await database.select().from(userSchema).where(eq(userSchema.email, user.email)).limit(1);
+        if (existingUser.length) {
+            return res.status(400).send('User already exists');
+        }
 
-			const newUser = await database.insert(userSchema).values({ username: user.username, email: user.email, password: hash }).returning();
+        bcrypt.hash(user.password, 10, async function (err, hash) {
+            if (err) {
+                console.error('Error hashing password:', err);
+                return res.status(500).send('Internal server error while hashing password');
+            }
 
-			const { password: _, ...userWithoutPassword } = newUser[0];
-			res.status(201).json(userWithoutPassword);
-		});
-	} catch (err) {
-		console.error('Error registering new user:', err);
-		res.status(500).send('Internal server error while registering new user');
-	}
+            const newUser = await database.insert(userSchema).values({ username: user.username, email: user.email, password: hash }).returning();
+
+            const { password: _, ...userWithoutPassword } = newUser[0];
+            res.status(201).json(userWithoutPassword);
+        });
+    } catch (err) {
+        console.error('Error registering new user:', err);
+        res.status(500).send('Internal server error while registering new user');
+    }
 };
 
 export const handleLoginUser = async (req: Request, res: Response): Promise<any> => {
