@@ -26,7 +26,7 @@ Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina para
    ```
 
 
-2. **Inicie os contêineres Docker:**
+2. **Inicie os containers Docker:**
 
    ```sh
    docker-compose up --build
