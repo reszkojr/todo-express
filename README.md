@@ -15,8 +15,12 @@ A API permite criar, ler, atualizar e excluir tarefas, além de gerenciar usuár
 
 Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina para a configuração com Docker.
 
-- [Docker](https://www.docker.com/)
+Se você estiver no Linux:
+- [Docker](https://docs.docker.com/desktop/setup/install/linux/)
 - [Docker Compose](https://docs.docker.com/compose/)
+
+Se você estiver no Windows:
+- [Docker](https://docs.docker.com/desktop/setup/install/windows-install/) (o comando `docker-compose` já vem instalado no pacote do Docker para Windows)
 
 1. **Clone o repositório:**
 
@@ -28,11 +32,19 @@ Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina para
 
 2. **Inicie os containers Docker:**
 
+> Apenas para Windows: certifique-se de que a interface do Docker esteja aberta para que o daemon do Docker esteja iniciado.
    ```sh
    docker-compose up --build
    ```
 
-   O servidor estará disponível em `http://localhost:3000`.
+   O servidor estará disponível em `http://localhost:3000` quando você ver a seguinte mensagem nos logs do Docker:
+   ```sh
+  > todo-express@1.0.0 dev /app
+  > ts-node src/app.ts
+  
+  Server running on port 3000
+  Swagger docs available at http://localhost:3000/api-docs
+   ```
 
 
 ### O que o Docker faz
