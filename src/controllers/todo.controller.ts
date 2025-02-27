@@ -36,7 +36,7 @@ export const handleCreateTodo = async (req: Request, res: Response): Promise<any
 		const userId = req.user?.id;
 		const todo = req.body;
 
-		if (todo.title == undefined || todo.description == undefined || todo.status == undefined) {
+		if (todo.title == undefined || todo.description == undefined || todo.status == undefined || todo.title == '' || todo.description == '' || todo.status == '') {
 			return res.status(400).send('Title, description and status are required');
 		}
 
